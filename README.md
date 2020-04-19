@@ -1,6 +1,7 @@
 vmount - Mount multiple volumes using the same password with veracrypt
 
 Usage: vmount CONTAINER1 MOUNTPOINT1 [CONTAINER2 MOUNTPOINT2] ...
+
 License: GPL (see gpl-3.0.txt)
 
 This is just scratch and not recommended to use for anyone :D
