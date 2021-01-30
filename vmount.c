@@ -19,6 +19,7 @@ void success(char *container, char *mountpoint)
 	} else {
 		printf("Error mounting \t%s\tat %s\t<< return value:%d\n",
 				container, mountpoint, status);
+		//exit(2);
 	}
 }
 
@@ -28,6 +29,7 @@ int main(int argc, char* argv[])
 		int inst = (argc-1)/2;
 		int     fd[inst][2];
 		pid_t   pid;
+		//char    scmd[] = "veracrypt";
 		char    scmd[] = "sudo";
 
 		for (int i = 0; i<inst;i++) {
@@ -62,7 +64,8 @@ int main(int argc, char* argv[])
 			freopen("/dev/null", "w", stdout);
 
 			execlp(scmd, scmd, "veracrypt", "-t", "--protect-hidden=no",
-					"--keyfiles=", "--pim=753",argv[j*2+1],argv[j*2+2],
+					"--keyfiles=", "--fs-options=user", "--pim=123",
+					argv[j*2+1],argv[j*2+2],
 					(char*) NULL);
 			fprintf(stderr, "Failed to execute '%s'\n", scmd);
 			exit(1);
